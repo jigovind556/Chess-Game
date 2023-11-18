@@ -36,7 +36,7 @@ This project provides a simple and interactive chess game. It includes chess pie
 
 ## Demo
 
-[Link to live demo](#)
+[Link to live demo](https://jigovind556.github.io/Chess-Game/)
 
 ## Contributing
 
