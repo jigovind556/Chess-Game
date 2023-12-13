@@ -75,6 +75,7 @@ const ChessBoard = () => {
     }
     else if(highlight[i][j]){
       active_goti.move(i,j);
+      if(pos_mat[i][j]!=="") 
       sethighlight( Array.from({ length: 8 }, () => Array(8).fill(false)));
       set_p_turn((p_turn===1)?2:1);
     }

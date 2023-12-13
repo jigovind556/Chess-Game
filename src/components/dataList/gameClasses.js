@@ -3,6 +3,11 @@
 
 var board;
 var setgtps;
+
+function isValid(i,j){
+  if(i>=0 && j>=0 && i<8 && j<8) return true;
+  else return false;
+}
 class Goti {
   constructor(i, j, player, name) {
     this.player = player;
@@ -13,7 +18,7 @@ class Goti {
     return this._pos;
   }
   set pos({ i, j }) {
-    if (board[i][j] !== "") {
+    if (board[i][j] !== "" || board[i][j].charAt(3)!==this.player+1) {
       console.log("position occupied at ", i, j);
     //   throw new Error("Position occupied");
     } else {
@@ -102,10 +107,14 @@ class Sipahi extends Goti {
 
         if(x.i<=6 && board[x.i+1][x.j]==="") temp.push([x.i+1,x.j]);
         if(x.i===1 && board[x.i+2][x.j]==="") temp.push([x.i+2,x.j]);
+        if(isValid(x.i+1,x.j+1) && board[x.i+1][x.j+1]!=="" && board[x.i+1][x.j+1].charAt(3)==='2') temp.push([x.i+1,x.j+1]);
+        if(isValid(x.i+1,x.j-1) && board[x.i+1][x.j-1]!=="" && board[x.i+1][x.j-1].charAt(3)==='2') temp.push([x.i+1,x.j-1]);
     }
     else{
         if(x.i>=1 && board[x.i-1][x.j] ==="") temp.push([x.i-1,x.j]);
         if(x.i===6 && board[x.i-2][x.j] ==="") temp.push([x.i-2,x.j]);
+        if(isValid(x.i-1,x.j+1) && board[x.i-1][x.j+1]!=="" && board[x.i-1][x.j+1].charAt(3)==='1') temp.push([x.i-1,x.j+1]);
+        if(isValid(x.i-1,x.j-1) && board[x.i-1][x.j-1]!=="" && board[x.i-1][x.j-1].charAt(3)==='1') temp.push([x.i-1,x.j-1]);
         
     }
     return temp;
